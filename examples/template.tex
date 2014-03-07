@@ -1,5 +1,5 @@
 %% start of file `template.tex'.
-%% Copyright 2006-2012 Xavier Danaux (xdanaux@gmail.com).
+%% Copyright 2006-2013 Xavier Danaux (xdanaux@gmail.com).
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License version 1.3c,
@@ -24,15 +24,17 @@
 %\setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
 
 % personal data
-\firstname{John}
-\familyname{Doe}
+\name{John}{Doe}
 \title{Resumé title}                               % optional, remove / comment the line if not wanted
-\address{street and number}{postcode city}{country}% optional, remove / comment the line if not wanted; the "postcode city" and and "country" arguments can be omitted or provided empty
-\mobile{+1~(234)~567~890}                          % optional, remove / comment the line if not wanted
-\phone{+2~(345)~678~901}                           % optional, remove / comment the line if not wanted
-\fax{+3~(456)~789~012}                             % optional, remove / comment the line if not wanted
+\address{street and number}{postcode city}{country}% optional, remove / comment the line if not wanted; the "postcode city" and "country" arguments can be omitted or provided empty
+\phone[mobile]{+1~(234)~567~890}                   % optional, remove / comment the line if not wanted; the optional "type" of the phone can be "mobile" (default), "fixed" or "fax"
+\phone[fixed]{+2~(345)~678~901}
+\phone[fax]{+3~(456)~789~012}
 \email{john@doe.org}                               % optional, remove / comment the line if not wanted
 \homepage{www.johndoe.com}                         % optional, remove / comment the line if not wanted
+\social[linkedin]{john.doe}                        % optional, remove / comment the line if not wanted
+\social[twitter]{jdoe}                             % optional, remove / comment the line if not wanted
+\social[github]{jdoe}                              % optional, remove / comment the line if not wanted
 \extrainfo{additional information}                 % optional, remove / comment the line if not wanted
 \photo[64pt][0.4pt]{picture}                       % optional, remove / comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
 \quote{Some quote}                                 % optional, remove / comment the line if not wanted
@@ -41,6 +43,7 @@
 %\makeatletter
 %\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
 %\makeatother
+%\renewcommand*{\bibliographyitemlabel}{[\arabic{enumiv}]}% CONSIDER REPLACING THE ABOVE BY THIS
 
 % bibliography with mutiple entries
 %\usepackage{multibib}
@@ -105,15 +108,20 @@ Detailed achievements:%
 \cvlistitem{Item 2}
 \cvlistitem{Item 3. This item is particularly long and therefore normally spans over several lines. Did you notice the indentation when the line wraps?}
 
-\renewcommand{\listitemsymbol}{-~}                 % change the symbol for lists
-
 \section{Extra 2}
 \cvlistdoubleitem{Item 1}{Item 4}
 \cvlistdoubleitem{Item 2}{Item 5\cite{book1}}
 \cvlistdoubleitem{Item 3}{Item 6. Like item 3 in the single column list before, this item is particularly long to wrap over several lines.}
 
+\section{References}
+\begin{cvcolumns}
+  \cvcolumn{Category 1}{\begin{itemize}\item Person 1\item Person 2\item Person 3\end{itemize}}
+  \cvcolumn{Category 2}{Amongst others:\begin{itemize}\item Person 1, and\item Person 2\end{itemize}(more upon request)}
+  \cvcolumn[0.5]{All the rest \& some more}{\textit{That} person, and \textbf{those} also (all available upon request).}
+\end{cvcolumns}
+
 % Publications from a BibTeX file without multibib
-%  for numerical labels: \renewcommand{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
+%  for numerical labels: \renewcommand{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}% CONSIDER MERGING WITH PREAMBLE PART
 %  to redefine the heading string ("Publications"): \renewcommand{\refname}{Articles}
 \nocite{*}
 \bibliographystyle{plain}
